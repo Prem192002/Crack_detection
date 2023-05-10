@@ -1,7 +1,7 @@
 import cv2
 
 # Load the image
-img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\crack_road3.jpg")
+img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\crack_road4.jpeg")
 
 # Convert the image to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -19,8 +19,7 @@ lines, width, prec, nfa = lsd.detect(edges)
 # Draw the detected line segments on the original image
 for line in lines:
     x1, y1, x2, y2 = map(int, line[0])
-    thickness = 0.2
-    cv2.line(img, (x1, y1), (x2, y2), (0, 255, 0), int(thickness*10))
+    cv2.line(img, (x1, y1), (x2, y2), (0, 0, 255), 1)
 
 # Display the result
 cv2.imshow("Crack Detection", img)
