@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Load the image
-img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\crack_road3.jpg")
+img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\univ5.jpg")
 
 # Convert the image to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -20,7 +20,7 @@ lines, width, prec, nfa = lsd.detect(edges)
 # Draw the detected line segments on the original image
 for i, line in enumerate(lines):
     x1, y1, x2, y2 = map(int, line[0])
-    thickness = 1
+    thickness = 6
     if width[i] > 3:
         color = (0, 0, 255) # red for large cracks
     elif width[i] > 1:
