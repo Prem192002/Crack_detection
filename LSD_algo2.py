@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Load the image
-img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\univ2.jpg")
+img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\univ5.jpg")
 
 # Convert the image to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -11,7 +11,7 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 blur = cv2.GaussianBlur(gray, (3, 3), 0)
 
 # Apply Canny edge detection to detect edges
-edges = cv2.Canny(blur, 50, 350, apertureSize=7)
+edges = cv2.Canny(blur, 5, 350, apertureSize=7)
 
 # Apply LSD algorithm to detect line segments
 lsd = cv2.createLineSegmentDetector()
