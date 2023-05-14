@@ -8,10 +8,10 @@ img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\univ5.jpg")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Apply Gaussian blur to reduce noise
-blur = cv2.GaussianBlur(gray, (3, 3), 0)
+blur = cv2.GaussianBlur(gray, (3,3), 0)
 
 # Apply Canny edge detection to detect edges
-edges = cv2.Canny(blur, 0, 550, apertureSize=7)
+edges = cv2.Canny(blur, 50, 250, apertureSize=7)
 
 # Apply LSD algorithm to detect line segments
 lsd = cv2.createLineSegmentDetector()
