@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Load the image
-img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\univ5.jpg")
+img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\sample4.jpeg")
 
 # Convert the image to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -27,9 +27,9 @@ lines, width, prec, nfa = lsd.detect(edges)
 for i, line in enumerate(lines):
     x1, y1, x2, y2 = map(int, line[0])
     thickness = width[i]
-    if thickness >= 3:
+    if thickness >= 1:
         color = (0, 0, 255) # red for cracks with thickness between 5-3
-    elif thickness >= 1:
+    elif thickness >= 0:
         color = (0, 255, 255) # yellow for cracks with thickness between 3-1
     else:
         color = (0, 255, 0) # green for cracks with thickness less than 1
