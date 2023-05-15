@@ -8,7 +8,7 @@ img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\sample4.jpeg")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Apply Gaussian blur to reduce noise
-blur = cv2.GaussianBlur(gray, (3, 3), 0)
+blur = cv2.GaussianBlur(gray, (5, 5), 0)
 
 # Apply Laplacian edge detection
 laplacian = cv2.Laplacian(blur, cv2.CV_64F)
@@ -27,7 +27,7 @@ lines, width, prec, nfa = lsd.detect(edges)
 for i, line in enumerate(lines):
     x1, y1, x2, y2 = map(int, line[0])
     thickness = width[i]
-    if thickness >= 3:
+    if thickness >= 1:
         color = (0, 0, 255) # red for cracks with thickness between 5-3
     elif thickness >= 0:
         color = (0, 255, 255) # yellow for cracks with thickness between 3-1
