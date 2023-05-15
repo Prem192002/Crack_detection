@@ -27,7 +27,7 @@ lines, width, prec, nfa = lsd.detect(edges)
 for i, line in enumerate(lines):
     x1, y1, x2, y2 = map(int, line[0])
     thickness = width[i]
-    if thickness >= 1:
+    if thickness >= 3:
         color = (0, 0, 255) # red for cracks with thickness between 5-3
     elif thickness >= 0:
         color = (0, 255, 255) # yellow for cracks with thickness between 3-1
