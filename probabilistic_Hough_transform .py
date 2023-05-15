@@ -4,24 +4,24 @@ import numpy as np
 # Load the image
 img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\univ5.jpg")
 
-# Convert the image to grayscale
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# Apply Bilateral Filter to reduce noise while preserving edges
+blur = cv2.bilateralFilter(img, 9, 75, 75)
 
-# Apply Gaussian blur to reduce noise
-blur = cv2.GaussianBlur(gray, (5, 5), 0)
+# Convert the image to grayscale
+gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
 
 # Apply Canny edge detection to detect edges
-edges = cv2.Canny(blur, 50, 150, apertureSize=3)
+edges = cv2.Canny(gray, 50, 150)
 
-# Apply probabilistic Hough transform to detect lines
-lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi / 180, threshold=50, minLineLength=50, maxLineGap=10)
+# Apply Probabilistic Hough Transform to detect line segments
+lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi/180, threshold=50, minLineLength=10, maxLineGap=20)
 
-# Draw the detected lines on the original image
+# Draw the detected line segments on the original image
 for line in lines:
     x1, y1, x2, y2 = line[0]
-    cv2.line(img, (x1, y1), (x2, y2), (0, 255, 0), 1)
+    cv2.line(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
 # Display the result
-cv2.imshow('Crack Detection', img)
+cv2.imshow("Crack Detection", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
