@@ -17,7 +17,7 @@ laplacian = cv2.Laplacian(blur, cv2.CV_64F)
 laplacian = np.uint8(np.absolute(laplacian))
 
 # Apply thresholding to detect edges
-edges = cv2.threshold(laplacian, 50, 600, cv2.THRESH_BINARY+cv2.THRESH_OTSU)[1]
+edges = cv2.threshold(laplacian, 0, 250, cv2.THRESH_BINARY+cv2.THRESH_OTSU)[1]
 
 # Apply LSD algorithm to detect line segments
 lsd = cv2.createLineSegmentDetector()
