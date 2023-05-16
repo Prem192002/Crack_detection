@@ -8,7 +8,7 @@ img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\sample4.jpeg")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Apply Gaussian blur to reduce noise
-blur = cv2.GaussianBlur(gray, (1, 1), 0)
+blur = cv2.GaussianBlur(gray, (1,1), 0)
 
 # Apply Laplacian edge detection
 laplacian = cv2.Laplacian(blur, cv2.CV_64F)
@@ -17,7 +17,7 @@ laplacian = cv2.Laplacian(blur, cv2.CV_64F)
 laplacian = np.uint8(np.absolute(laplacian))
 
 # Apply thresholding to detect edges
-edges = cv2.threshold(laplacian, 0, 600, cv2.THRESH_BINARY+cv2.THRESH_OTSU)[1]
+edges = cv2.threshold(laplacian, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)[1]
 
 # Apply LSD algorithm to detect line segments
 lsd = cv2.createLineSegmentDetector()
