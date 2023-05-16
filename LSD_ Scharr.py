@@ -2,22 +2,22 @@ import cv2
 import numpy as np
 
 # Load the image
-img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\crack_road3.jpg")
+img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\univ5.jpg")
 
 # Convert the image to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Apply Gaussian blur to reduce noise
-blur = cv2.GaussianBlur(gray, (1,1), 0)
+blur = cv2.GaussianBlur(gray, (3, 3), 0)
 
-# Apply Sobel edge detection
-gradient_x = cv2.Sobel(blur, cv2.CV_64F, 1, 0, ksize=3)
-gradient_y = cv2.Sobel(blur, cv2.CV_64F, 0, 1, ksize=3)
+# Apply Scharr edge detection
+gradient_x = cv2.Scharr(blur, cv2.CV_64F, 1, 0)
+gradient_y = cv2.Scharr(blur, cv2.CV_64F, 0, 1)
 gradient_abs = cv2.addWeighted(cv2.convertScaleAbs(gradient_x), 0.5,
                                cv2.convertScaleAbs(gradient_y), 0.5, 0)
 
 # Apply thresholding to detect edges
-edges = cv2.threshold(gradient_abs, 0, 500, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+edges = cv2.threshold(gradient_abs, 50, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 
 # Apply LSD algorithm to detect line segments
 lsd = cv2.createLineSegmentDetector()
