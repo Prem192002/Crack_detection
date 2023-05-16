@@ -2,24 +2,33 @@ import cv2
 import numpy as np
 
 # Load the image
-img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\univ5.jpg")
-
-# Apply Bilateral Filter to reduce noise while preserving edges
-blur = cv2.bilateralFilter(img, 9, 75, 75)
+img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\sample4.jpeg")
 
 # Convert the image to grayscale
-gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-# Apply Canny edge detection to detect edges
-edges = cv2.Canny(gray, 50, 150)
+# Apply Gaussian blur to reduce noise
+blur = cv2.GaussianBlur(gray, (1, 1), 0)
 
-# Apply Probabilistic Hough Transform to detect line segments
-lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi/180, threshold=50, minLineLength=10, maxLineGap=20)
+# Apply Laplacian edge detection
+laplacian = cv2.Laplacian(blur, cv2.CV_64F)
+
+# Convert the Laplacian result to uint8
+laplacian = np.uint8(np.absolute(laplacian))
+
+# Apply thresholding to detect edges
+edges = cv2.threshold(laplacian, 0, 600, cv2.THRESH_BINARY+cv2.THRESH_OTSU)[1]
+
+# Apply LSD algorithm to detect line segments
+lsd = cv2.createLineSegmentDetector()
+lines, width, prec, nfa = lsd.detect(edges)
 
 # Draw the detected line segments on the original image
-for line in lines:
-    x1, y1, x2, y2 = line[0]
-    cv2.line(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
+for i, line in enumerate(lines):
+    x1, y1, x2, y2 = map(int, line[0])
+    thickness = width[i]
+    color = (0, 0, 255)  # Red color for all cracks
+    cv2.line(img, (x1, y1), (x2, y2), color, 2)
 
 # Display the result
 cv2.imshow("Crack Detection", img)
