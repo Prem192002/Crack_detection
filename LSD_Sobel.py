@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Load the image
-img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\univ5.jpg")
+img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\sample4.jpeg")
 
 # Convert the image to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -17,7 +17,7 @@ gradient_abs = cv2.addWeighted(cv2.convertScaleAbs(gradient_x), 0.5,
                                cv2.convertScaleAbs(gradient_y), 0.5, 0)
 
 # Apply thresholding to detect edges
-edges = cv2.threshold(gradient_abs, 50, 500, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+edges = cv2.threshold(gradient_abs, 0, 500, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 
 # Apply LSD algorithm to detect line segments
 lsd = cv2.createLineSegmentDetector()
