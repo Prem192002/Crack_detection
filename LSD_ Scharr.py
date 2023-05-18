@@ -2,13 +2,13 @@ import cv2
 import numpy as np
 
 # Load the image
-img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\carck.jpeg")
+img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\sample4.jpeg")
 
 # Convert the image to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Apply Gaussian blur to reduce noise
-blur = cv2.GaussianBlur(gray, (3, 3), 0)
+blur = cv2.GaussianBlur(gray, (3,3), 2)
 
 # Apply Scharr edge detection
 gradient_x = cv2.Scharr(blur, cv2.CV_64F, 1, 0)
