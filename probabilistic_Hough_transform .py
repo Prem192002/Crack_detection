@@ -10,13 +10,13 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # Apply Gaussian blur to reduce noise
 blur = cv2.GaussianBlur(gray, (5, 5), 2)
 
-# Apply top-hat transform to enhance cracks
+# Apply morphological gradient to enhance cracks
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (15, 15))
-tophat = cv2.morphologyEx(blur, cv2.MORPH_TOPHAT, kernel)
+gradient = cv2.morphologyEx(blur, cv2.MORPH_GRADIENT, kernel)
 
-# Apply Scharr edge detection to the top-hat image
-gradient_x = cv2.Scharr(tophat, cv2.CV_64F, 1, 0)
-gradient_y = cv2.Scharr(tophat, cv2.CV_64F, 0, 1)
+# Apply Scharr edge detection to the gradient image
+gradient_x = cv2.Scharr(gradient, cv2.CV_64F, 1, 0)
+gradient_y = cv2.Scharr(gradient, cv2.CV_64F, 0, 1)
 gradient_abs = cv2.addWeighted(cv2.convertScaleAbs(gradient_x), 0.5,
                                cv2.convertScaleAbs(gradient_y), 0.5, 0)
 
