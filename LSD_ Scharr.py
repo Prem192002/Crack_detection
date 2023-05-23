@@ -8,7 +8,7 @@ img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\sample4.jpeg")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Apply Gaussian blur to reduce noise
-blur = cv2.GaussianBlur(gray, (3,3), 2)
+blur = cv2.GaussianBlur(gray, (3,3), 1)
 
 # Apply Scharr edge detection
 gradient_x = cv2.Scharr(blur, cv2.CV_64F, 1, 0)
@@ -28,7 +28,7 @@ for i, line in enumerate(lines):
     x1, y1, x2, y2 = map(int, line[0])
     thickness = width[i]
     color = (0, 0, 255)  # Red color for all cracks
-    cv2.line(img, (x1, y1), (x2, y2), color, 1)
+    cv2.line(img, (x1, y1), (x2, y2), color, 2)
 
 # Display the result
 cv2.imshow("Crack Detection", img)
