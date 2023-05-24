@@ -14,7 +14,7 @@ blur = cv2.GaussianBlur(gray, (3,3), 1)
 gradient_x = cv2.Scharr(blur, cv2.CV_64F, 1, 0)
 gradient_y = cv2.Scharr(blur, cv2.CV_64F, 0, 1)
 gradient_abs = cv2.addWeighted(cv2.convertScaleAbs(gradient_x), 0.5,
-                               cv2.convertScaleAbs(gradient_y), 0.5, 3)
+                               cv2.convertScaleAbs(gradient_y), 0.5, 1)
 
 # Apply thresholding to detect edges
 edges = cv2.threshold(gradient_abs, 50, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
