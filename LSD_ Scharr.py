@@ -28,7 +28,7 @@ for i, line in enumerate(lines):
     x1, y1, x2, y2 = map(int, line[0])
     thickness = width[i]
     color = (0, 0, 255)  # Red color for all cracks
-    cv2.line(img, (x1, y1), (x2, y2), color, 1)
+    cv2.line(img, (x1, y1), (x2, y2), color, 2)
 
 # Display the result
 cv2.imshow("Crack Detection", img)
