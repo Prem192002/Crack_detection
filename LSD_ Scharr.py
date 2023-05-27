@@ -27,7 +27,15 @@ lines, width, prec, nfa = lsd.detect(edges)
 for i, line in enumerate(lines):
     x1, y1, x2, y2 = map(int, line[0])
     thickness = width[i]
-    color = (0, 0, 255)  # Red color for all cracks
+    
+    # Set the color based on crack size
+    if thickness > 5:
+        color = (0, 255, 255)  # Red for larger cracks
+    elif thickness > 2:
+        color = (0, 0, 255)  # Yellow for medium cracks
+    else:
+        color = (0, 255, 0)  # Green for small cracks
+    
     cv2.line(img, (x1, y1), (x2, y2), color, 2)
 
 # Display the result
