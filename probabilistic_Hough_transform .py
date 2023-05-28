@@ -24,7 +24,7 @@ gradient_abs = cv2.addWeighted(cv2.convertScaleAbs(gradient_x), 0.5,
 edges = cv2.threshold(gradient_abs, 50, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 
 # Perform morphological closing
-kernel = np.ones((5, 5), np.uint8)
+kernel = np.ones((3,3), np.uint8)
 edges = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, kernel)
 
 # Apply Hough Line Transform for line segment detection
