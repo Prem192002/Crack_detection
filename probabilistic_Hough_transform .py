@@ -34,7 +34,7 @@ lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi / 180, threshold=50, minLineLe
 if lines is not None:
     for line in lines:
         x1, y1, x2, y2 = line[0]
-        color = (0, 0, 255)  # Red color for all cracks
+        color = (0,255,0)  # Red color for all cracks
         cv2.line(img, (x1, y1), (x2, y2), color, 2)
 
 # Display the result
