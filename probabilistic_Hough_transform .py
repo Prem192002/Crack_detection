@@ -11,7 +11,7 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 blur = cv2.GaussianBlur(gray, (3,3), 1)
 
 # Apply morphological gradient to enhance cracks
-kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30,30))
+kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (40,40))
 gradient = cv2.morphologyEx(blur, cv2.MORPH_GRADIENT, kernel)
 
 # Apply Scharr edge detection to the gradient image
