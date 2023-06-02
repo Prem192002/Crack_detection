@@ -21,7 +21,7 @@ gradient_abs = cv2.addWeighted(cv2.convertScaleAbs(gradient_x), 0.5,
                                cv2.convertScaleAbs(gradient_y), 0.5, 0)
 
 # Apply thresholding to detect edges
-edges = cv2.threshold(gradient_abs, 50, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+edges = cv2.threshold(gradient_abs, 40, 400, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 
 # Perform morphological closing
 kernel = np.ones((5,5), np.uint8)
