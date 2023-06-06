@@ -58,7 +58,7 @@ while True:
             else:
                 color = (0, 255, 0)  # Green for small cracks
 
-            cv2.line(frame, (x1, y1), (x2, y2), color, 2)
+            cv2.line(frame, (x1, y1), (x2, y2), color, 1)
 
     # Display the result
     cv2.imshow("Crack Detection", frame)
