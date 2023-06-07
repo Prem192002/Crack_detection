@@ -29,7 +29,7 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Apply Gaussian blur to reduce noise
-    blur = cv2.GaussianBlur(gray, (3, 3), 1)
+    blur = cv2.GaussianBlur(gray, (3, 3), 2)
 
     # Apply Scharr edge detection
     gradient_x = cv2.Scharr(blur, cv2.CV_64F, 1, 0)
