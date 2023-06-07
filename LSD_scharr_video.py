@@ -51,9 +51,9 @@ while True:
             thickness = width[i]
 
             # Set the color based on crack size
-            if thickness > 25:
+            if thickness > 10:
                 color = (0, 0, 255)  # Red for larger cracks
-            elif thickness > 10:
+            elif thickness > 5:
                 color = (0, 255, 255)  # Yellow for medium cracks
             else:
                 color = (0, 255, 0)  # Green for small cracks
