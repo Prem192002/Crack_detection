@@ -8,7 +8,7 @@ img = cv2.imread(r"C:\Users\Prem\OneDrive\Pictures\sample4.jpeg")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Apply Gaussian blur to reduce noise
-blur = cv2.GaussianBlur(gray, (3, 3), 0)
+blur = cv2.GaussianBlur(gray, (3, 3), 1)
 
 # Apply Canny edge detection to detect edges
 edges = cv2.Canny(blur, 10, 600, apertureSize=5)
