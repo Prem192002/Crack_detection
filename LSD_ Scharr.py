@@ -36,7 +36,7 @@ for i, line in enumerate(lines):
     else:
         color = (0, 255, 0)  # Green for small cracks
     
-    cv2.line(img, (x1, y1), (x2, y2), color, 1)
+    cv2.line(img, (x1, y1), (x2, y2), color, 2)
 
 # Display the result
 cv2.imshow("Crack Detection", img)
