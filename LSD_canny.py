@@ -26,7 +26,7 @@ for i, line in enumerate(lines):
     elif thickness >= 1:
         color = (0, 0, 255) # yellow for cracks with thickness between 3-1
     else:
-        color = (0, 255, 0) # green for cracks with thickness less than 1
+        color = (0, 255, 255) # green for cracks with thickness less than 1
     cv2.line(img, (x1, y1), (x2, y2), color, 2)
 
 # Display the result
