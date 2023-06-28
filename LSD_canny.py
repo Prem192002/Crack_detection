@@ -11,7 +11,7 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 blur = cv2.GaussianBlur(gray, (3, 3), 2)
 
 # Apply Canny edge detection to detect edges
-edges = cv2.Canny(blur, 50, 500, apertureSize=5)
+edges = cv2.Canny(blur, 45, 450, apertureSize=5)
 
 # Apply LSD algorithm to detect line segments
 lsd = cv2.createLineSegmentDetector()
