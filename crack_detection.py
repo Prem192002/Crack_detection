@@ -11,7 +11,7 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 blur = cv2.GaussianBlur(gray, (3,3), 2)
 
 # Apply Canny edge detection to detect edges
-edges = cv2.Canny(blur, 25, 400, apertureSize=3)
+edges = cv2.Canny(blur, 55, 400, apertureSize=3)
 
 # Apply Hough transform to detect lines
 lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi / 180, threshold=50, minLineLength=50, maxLineGap=10)
