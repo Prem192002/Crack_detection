@@ -26,7 +26,7 @@ lines, _, _, _ = lsd.detect(edges)
 # Draw the detected line segments on the original image
 for i, line in enumerate(lines):
     for x1, y1, x2, y2 in line:
-        cv2.line(img, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
+        cv2.line(img, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 1)
 
 # Display the result
 cv2.imshow("Crack Detection", img)
