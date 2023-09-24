@@ -21,4 +21,4 @@ if lines is not None:
     # Draw the detected lines on the original image
     for line in lines:
         x1, y1, x2, y2 = line[0]
-        cv2.line(img, (x1, y1), (x2, y2), (0, 255,0), 2) 
+        cv2.line(img, (x1, y1), (x2, y2), (0, 255,0), 1) 
